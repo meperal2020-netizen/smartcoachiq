@@ -1,26 +1,49 @@
 @import "tailwindcss";
 
+/* Tokens por defecto (modo claro) */
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #111111;
+
+  /* Paletas opcionales que podrás usar como text-brand / bg-brand, etc. */
+  --color-brand:   #111111; /* negro por defecto */
+  --color-sport:   #111111;
+  --color-passion: #111111;
+  --color-premium: #111111;
+  --color-neutral: #666666;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
+/* Modo oscuro (si lo quisieras activar más adelante) */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+
+    --color-brand:   #ededed; /* blanco en dark */
+    --color-sport:   #ededed;
+    --color-passion: #ededed;
+    --color-premium: #ededed;
+    --color-neutral: #cfcfcf;
   }
 }
 
+/* Mapear tokens a Tailwind (v4) */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-brand:   var(--color-brand);
+  --color-sport:   var(--color-sport);
+  --color-passion: var(--color-passion);
+  --color-premium: var(--color-premium);
+  --color-neutral: var(--color-neutral);
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+/* Estilos base */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
 }
